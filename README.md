@@ -14,6 +14,29 @@
 
 ---
 
+## 🎯 Quick Start (3 Steps)
+
+Want to see it in action? Follow these simple steps:
+
+### 1️⃣ Paste Any Public GitHub Repository URL
+```
+Example: https://github.com/username/repository
+```
+
+### 2️⃣ Click "DEPLOY AGENT ▶" Button
+Watch the agent analyze your code in real-time!
+
+### 3️⃣ Check Your Pull Request
+- Agent will fork your repo
+- Create a new branch: `iamaako_ai-fix`
+- Detect bugs and issues
+- Apply fixes automatically
+- Create a Pull Request with all changes
+
+**That's it!** The agent does everything automatically. Just review the PR and merge! 🎉
+
+---
+
 ## 🏆 Hackathon Project
 
 **Team Name:** Lone Wolf  
