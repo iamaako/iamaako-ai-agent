@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { AgentPhase, AgentResult, MOCK_RESULT } from "@/types/agent";
+import { supabase } from "@/integrations/supabase/client";
 
 interface AgentState {
   phase: AgentPhase;
@@ -54,17 +55,9 @@ export const useAgentStore = create<AgentState>((set, get) => ({
       const envToken = import.meta.env.VITE_GITHUB_TOKEN;
       const finalToken = githubToken || envToken;
       
-      // Use Vercel serverless function
-      const apiUrl = '/api/trigger-agent';
-      
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ repoUrl, githubToken: finalToken || undefined }),
+      const { data, error } = await supabase.functions.invoke('trigger-agent', {
+        body: { repoUrl, githubToken: finalToken || undefined },
       });
-
-      const data = await response.json();
-      const error = response.ok ? null : { message: data.error || 'Unknown error' };
 
       clearInterval(phaseInterval);
 
